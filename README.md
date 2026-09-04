@@ -7,7 +7,7 @@
 Built for the Pawzz Foundation Product & Technology Internship screening assignment —
 not a mockup, a working, clickable, deployable site.
 
-[Live prototype](#-running-it-locally) · [Case study](./case-study.html) · [Design system](#-design-system) · [Deploying](#-deploying)
+[Live prototype](pawzz-care/index.html) · [Case study](pawzz-care/case-study.html) · [Design system](#-design-system) · [Deploying](#-deploying)
 
 ![No build step](https://img.shields.io/badge/build-none-1F6F5C?style=flat-square)
 ![Vanilla JS](https://img.shields.io/badge/JS-vanilla-1F6F5C?style=flat-square)
@@ -41,6 +41,8 @@ two working AI-flow demos, and a case study explaining the reasoning behind all 
 - **Scroll/mount reveal animations** — headlines fold in via GSAP; buttons animate via a hand-adapted Uiverse component
 
 ## 📄 Pages
+
+All site pages live in [`pawzz-care/`](./pawzz-care):
 
 | Page | Purpose |
 |---|---|
@@ -84,26 +86,30 @@ Two of the assignment's four AI workflows are **working demos**, not just descri
   live into an urgent (→ Emergency SOS) or routine (→ Search) recommendation.
 
 The other two — directory enrichment and a rescue-story copy assistant — are described in
-the [case study](./case-study.html) as the next AI bets once there's real provider data to work with.
+the [case study](./pawzz-care/case-study.html) as the next AI bets once there's real provider data to work with.
 
-## 🗂️ Project structure
+## 🗂️ Repo structure
 
 ```
-pawzz-care/
-├── index.html            search.html          provider.html
-├── emergency.html         health.html          upload.html
-├── triage.html            case-study.html
-├── assets/
-│   ├── css/
-│   │   ├── styles.css        # design tokens + every component
-│   │   ├── send-button.css   # the animated CTA (adapted from a Uiverse component)
-│   │   └── case-study.css    # long-form doc page layout
-│   ├── js/
-│   │   ├── app.js            # nav, wizards, fold-text, send-button generator
-│   │   └── case-study.js     # scroll-reveal for the case study page
-│   └── images/                # illustrations + brand mark (see asset-plan.html)
-├── asset-plan.html        # the brief given to generate every illustration
-└── button/                 # the original Uiverse source this repo's CTA is adapted from
+.
+├── pawzz-care/              # the deployable site (Vercel root directory)
+│   ├── index.html            search.html          provider.html
+│   ├── emergency.html         health.html          upload.html
+│   ├── triage.html            case-study.html
+│   ├── vercel.json           # makes "/" serve case-study.html
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── styles.css        # design tokens + every component
+│   │   │   ├── send-button.css   # the animated CTA (adapted from a Uiverse component)
+│   │   │   └── case-study.css    # long-form doc page layout
+│   │   ├── js/
+│   │   │   ├── app.js            # nav, wizards, fold-text, send-button generator
+│   │   │   └── case-study.js     # scroll-reveal for the case study page
+│   │   └── images/                # illustrations + brand mark (see asset-plan.html)
+│   ├── asset-plan.html        # the brief given to generate every illustration
+│   └── button/                 # the original Uiverse source this repo's CTA is adapted from
+├── docs/                     # the 2-page LaTeX submission doc + compiled PDF
+└── Practo-for-Animals-Product-Technology-Assignment.pdf   # the original brief
 ```
 
 ## 🚀 Running it locally
@@ -111,6 +117,8 @@ pawzz-care/
 No install, no build step, no dependencies beyond two CDN-hosted fonts and GSAP:
 
 ```bash
+cd pawzz-care
+
 # just open it
 open index.html          # macOS
 start index.html         # Windows
@@ -121,9 +129,10 @@ npx serve .
 
 ## ☁️ Deploying
 
-Static site — deploys to [Vercel](https://vercel.com) with **zero configuration**: no build
-command, no output directory override, no environment variables. Push the repo, import it
-on Vercel, done.
+Static site — deploys to [Vercel](https://vercel.com) with **zero build configuration**.
+Because the repo root holds more than just the site, set the project's **Root Directory to
+`pawzz-care`** on import. A `vercel.json` inside that folder rewrites `/` to `case-study.html`,
+so the shared link opens the case study first, with a button through to the live prototype.
 
 ## 🙏 Credits
 
@@ -132,7 +141,7 @@ on Vercel, done.
   for the details of what changed and why).
 - Fonts via [Google Fonts](https://fonts.google.com); scroll/fold animation via
   [GSAP](https://gsap.com) + ScrollTrigger.
-- Illustrations generated from the prompts in [`asset-plan.html`](./asset-plan.html).
+- Illustrations generated from the prompts in [`asset-plan.html`](./pawzz-care/asset-plan.html).
 
 ## 📌 Scope — what's deliberately not here
 
@@ -143,5 +152,5 @@ is a **conceptual prototype**, built to show product thinking and craft, not pro
 ---
 
 <div align="center">
-<sub>Built with <a href="https://claude.com/claude-code">Claude Code</a> — product thinking, prototype, and this README.</sub>
+<sub>Made with ❤️ by Aman Sheikh</sub>
 </div>
