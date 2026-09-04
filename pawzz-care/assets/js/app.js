@@ -195,19 +195,29 @@ function initFoldText() {
     const pieces = [];
     originalNodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        Array.from(node.data).forEach((ch) => {
-          if (ch === ' ') { visual.appendChild(document.createTextNode(' ')); return; }
-          const seg = document.createElement('span');
-          seg.style.display = 'inline-block';
-          seg.style.perspective = perspective + 'px';
-          const piece = document.createElement('span');
-          piece.className = 'fold-text-piece';
-          piece.dataset.foldHinge = hinge;
-          piece.style.transformOrigin = cfg.origin;
-          piece.textContent = ch;
-          seg.appendChild(piece);
-          visual.appendChild(seg);
-          pieces.push(piece);
+        // Split into words first and keep spaces as plain breakable text —
+        // otherwise adjacent per-letter inline-blocks give the browser a
+        // break opportunity between ANY two letters, and text-wrap:balance
+        // will happily snap a line in the middle of a word.
+        node.data.split(/( )/).forEach((part) => {
+          if (part === '') return;
+          if (part === ' ') { visual.appendChild(document.createTextNode(' ')); return; }
+          const word = document.createElement('span');
+          word.style.display = 'inline-block';
+          Array.from(part).forEach((ch) => {
+            const seg = document.createElement('span');
+            seg.style.display = 'inline-block';
+            seg.style.perspective = perspective + 'px';
+            const piece = document.createElement('span');
+            piece.className = 'fold-text-piece';
+            piece.dataset.foldHinge = hinge;
+            piece.style.transformOrigin = cfg.origin;
+            piece.textContent = ch;
+            seg.appendChild(piece);
+            word.appendChild(seg);
+            pieces.push(piece);
+          });
+          visual.appendChild(word);
         });
       } else if (node.nodeName === 'BR') {
         visual.appendChild(document.createElement('br'));
