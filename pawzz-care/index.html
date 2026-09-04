@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Care — Pawzz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/send-button.css">
+<link rel="icon" type="image/png" href="assets/images/brand-mark.png">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="nav-top">
+      <div class="container nav-top-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/images/brand-mark.png" alt=""></span>Pawzz<span class="dot">.</span></a>
+      </div>
+    </div>
+    <div class="nav-bottom">
+      <div class="container">
+        <nav class="nav-links">
+          <a href="#">Adoption</a>
+          <a href="#">Campaign</a>
+          <a href="#">Missing Pets</a>
+          <a href="#">Memory</a>
+          <a href="index.html" class="active new">Find Care</a>
+          <a href="#">Get Involved</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Find Care · Powered by Pawzz</span>
+        <h1 data-fold data-fold-trigger="mount">Because emergencies<br>don't wait for Google.</h1>
+        <p class="lede">Search verified vets, ambulances, NGOs and rescuers near you — and get AI help reading your
+          pet's medical records, in one place.</p>
+        <div class="hero-cta">
+          <a href="search.html" class="js-send-btn" data-label="Find Care Near You" data-sent="Found it"></a>
+          <a href="emergency.html" class="js-send-btn" data-label="SOS" data-sent="Calling" data-variant="sos"></a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob-accent"></div>
+        <div class="blob-main" role="img" aria-label="A happy dog being offered a treat by its owner"></div>
+        <span class="fleck fleck-1"></span>
+        <span class="fleck fleck-2"></span>
+        <span class="fleck fleck-3">
+          <svg viewBox="0 0 24 24" stroke-linecap="round">
+            <path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
+          </svg>
+        </span>
+        <div class="hero-chips">
+          <div class="floating-chip chip-top">
+            <span class="fc-icon" style="background:var(--green-100); color:var(--green-500);"><svg class="icon"
+                viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4" />
+                <circle cx="12" cy="12" r="9" />
+              </svg></span>
+            <span class="fc-text"><strong class="fc-num">128</strong><span class="fc-label">verified today</span></span>
+          </div>
+          <div class="floating-chip chip-bottom">
+            <span class="fc-icon" style="background:var(--coral-100); color:var(--coral-600);"><svg class="icon"
+                viewBox="0 0 24 24">
+                <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+              </svg></span>
+            <span class="fc-text"><strong class="fc-num">9 min</strong><span class="fc-label">avg. SOS
+                response</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding:20px 0 8px;">
+    <div class="container">
+      <div class="donate-card">
+        <div class="donate-art">
+          <img src="assets/images/donate-section-hero.png" alt="A rescued dog looking up hopefully at two cupped hands offering food">
+        </div>
+        <div class="donate-copy">
+          <span class="eyebrow" style="color:var(--coral-600);">Fuel the next rescue</span>
+          <h2 data-fold data-fold-trigger="mount" data-fold-hinge="left">Every rupee leaves a paw print</h2>
+          <p class="muted" style="margin-top:8px; max-width:44ch;">100% of donations go straight to verified NGO partners covering ambulance fuel, emergency surgeries and street feeding.</p>
+
+          <div class="paw-meter" aria-hidden="true">
+            <svg class="paw-track" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track paw-fill" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track paw-fill" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track paw-fill" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+            <svg class="paw-track paw-fill" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+          </div>
+          <div class="donate-meta">
+            <span><strong class="mono">₹1,84,000</strong> raised of ₹2,50,000 this month</span>
+            <span class="muted">≈ 46 emergency rescues funded</span>
+          </div>
+        </div>
+
+        <div class="donate-action">
+          <div class="donate-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+          </div>
+          <span class="donate-percent mono">74%</span>
+          <span class="muted" style="font-size:12px;">of this month's goal</span>
+          <a href="#" class="js-send-btn" data-label="Donate Now" data-sent="Thank you" data-variant="sos" style="margin-top:14px;"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" style="padding:36px 0;">
+    <div class="container stats-bar">
+      <div class="stat-tile">
+        <div class="num mono">120+</div>
+        <div class="lbl">Verified providers</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num mono">18</div>
+        <div class="lbl">NGO &amp; rescue partners</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num mono">24×7</div>
+        <div class="lbl">Emergency line</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num mono">3,140</div>
+        <div class="lbl">Animals helped</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Browse by category</span>
+          <h2 style="margin-top:8px;" data-fold data-fold-trigger="scroll">What kind of help do you need?</h2>
+        </div>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-tile" href="search.html">
+          <span class="cat-icon" style="background:var(--purple-100); color:var(--purple-800);"><svg class="icon"
+              viewBox="0 0 24 24">
+              <path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z" />
+            </svg></span>
+          <span class="cat-name">Vet Clinic</span>
+          <span class="cat-count">46 nearby</span>
+        </a>
+        <a class="cat-tile" href="emergency.html">
+          <span class="cat-icon" style="background:var(--coral-100); color:var(--coral-600);"><svg class="icon"
+              viewBox="0 0 24 24">
+              <rect x="1" y="7" width="16" height="11" rx="2" />
+              <path d="M17 10h3l3 3v4h-6z" />
+              <circle cx="6" cy="20" r="1.6" />
+              <circle cx="17.5" cy="20" r="1.6" />
+            </svg></span>
+          <span class="cat-name">Ambulance</span>
+          <span class="cat-count">Always on</span>
+        </a>
+        <a class="cat-tile" href="search.html">
+          <span class="cat-icon" style="background:var(--orange-100); color:var(--orange-600);"><svg class="icon"
+              viewBox="0 0 24 24">
+              <path
+                d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
+            </svg></span>
+          <span class="cat-name">NGO / Rescuer</span>
+          <span class="cat-count">18 partners</span>
+        </a>
+        <a class="cat-tile" href="search.html">
+          <span class="cat-icon" style="background:var(--yellow-400); color:var(--ink-900);"><svg class="icon"
+              viewBox="0 0 24 24">
+              <path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+            </svg></span>
+          <span class="cat-name">Boarding</span>
+          <span class="cat-count">12 nearby</span>
+        </a>
+        <a class="cat-tile" href="search.html">
+          <span class="cat-icon" style="background:var(--green-100); color:var(--green-500);"><svg class="icon"
+              viewBox="0 0 24 24">
+              <circle cx="6" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+              <path d="M20 4 8.5 15.5M14.5 14.5 20 20M8.5 8.5 14 14" />
+            </svg></span>
+          <span class="cat-name">Grooming</span>
+          <span class="cat-count">9 nearby</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Open near Sushant Lok II</span>
+          <h2 style="margin-top:8px;" data-fold data-fold-trigger="scroll">Care that's open right now</h2>
+        </div>
+        <a class="see-all" href="search.html">See all results →</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <a class="card-provider" href="provider.html">
+          <span class="thumb" style="background:var(--purple-600);">C9</span>
+          <span class="cp-body">
+            <span class="cp-name">Cloud9 Pet Clinic</span>
+            <span class="cp-meta"><span class="badge badge-open">Open</span><span
+                class="badge badge-verified">Verified</span><span class="mono">0.8 km</span><span class="stars"><svg
+                  viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 6.9L12 17.8 5.8 21.1l1.4-6.9L2 9.3l7-.8z" />
+                </svg>4.8</span></span>
+          </span>
+        </a>
+        <a class="card-provider" href="provider.html">
+          <span class="thumb" style="background:var(--coral-500);">PS</span>
+          <span class="cp-body">
+            <span class="cp-name">PawSafe Animal Ambulance</span>
+            <span class="cp-meta"><span class="badge badge-open">24×7</span><span class="mono">1.4 km</span><span
+                class="stars"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 6.9L12 17.8 5.8 21.1l1.4-6.9L2 9.3l7-.8z" />
+                </svg>4.6</span></span>
+          </span>
+        </a>
+        <a class="card-provider" href="provider.html">
+          <span class="thumb" style="background:var(--orange-500);">GA</span>
+          <span class="cp-body">
+            <span class="cp-name">Gurugram Animal Welfare Trust</span>
+            <span class="cp-meta"><span class="badge badge-closed">Closed</span><span class="mono">2.1 km</span><span
+                class="stars"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 6.9L12 17.8 5.8 21.1l1.4-6.9L2 9.3l7-.8z" />
+                </svg>4.7</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Where AI does the work</span>
+          <h2 style="margin-top:8px;" data-fold data-fold-trigger="scroll">Let AI carry the paperwork</h2>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr; gap:20px;">
+        <div class="ai-teaser">
+          <span class="teaser-art"><img src="assets/images/ai-document-scan-teaser.png" alt="Illustration of a document being scanned on a phone with a paw print"></span>
+          <div>
+            <h3>Snap a prescription, we organise it</h3>
+            <p class="muted" style="margin-top:4px; max-width:52ch;">Photograph a vet report, vaccination card or lab
+              result — Pawzz AI reads it and adds it straight to your pet's health timeline, with reminders.</p>
+          </div>
+          <a class="js-send-btn" href="upload.html" data-label="Try it" data-sent="Opening" data-variant="light"></a>
+        </div>
+        <div class="ai-teaser">
+          <span class="teaser-art"><img src="assets/images/ai-triage-teaser.png" alt="Illustration of a dog looking up at a speech bubble with a paw print"></span>
+          <div>
+            <h3>Not sure what's wrong? Ask Pawzz AI</h3>
+            <p class="muted" style="margin-top:4px; max-width:52ch;">Describe symptoms in plain language and get an
+              instant urgent-vs-routine read, routed straight to the right kind of help.</p>
+          </div>
+          <a class="js-send-btn" href="triage.html" data-label="Ask now" data-sent="Opening" data-variant="light"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-purple" style="padding:48px 0;">
+    <div class="container"
+      style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div>
+        <h2 style="color:var(--white);" data-fold data-fold-trigger="scroll">Run a clinic, ambulance or shelter?</h2>
+        <p style="margin-top:8px; opacity:.8; max-width:50ch;">Get listed on Find Care so pet parents and rescuers can
+          reach you first — free for verified NGOs and shelters.</p>
+      </div>
+      <a href="#" class="js-send-btn" data-label="List your organisation" data-sent="Noted" data-variant="light"></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:14px;">Pawzz<span class="dot">.</span></a>
+        <p style="max-width:32ch; font-size:13.5px; line-height:1.7;">Balancing the human-animal ecosystem in India —
+          rescue, adoption, and now, instant access to verified animal care.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Adoption</a></li>
+          <li><a href="#">Campaigns</a></li>
+          <li><a href="#">Missing Pets</a></li>
+          <li><a href="#">Memory Wall</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find Care</h4>
+        <ul>
+          <li><a href="search.html">Search Providers</a></li>
+          <li><a href="emergency.html">Emergency SOS</a></li>
+          <li><a href="health.html">Pet Health</a></li>
+          <li><a href="triage.html">Ask Pawzz AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Pawzz Foundation, Gurgaon</span>
+      <span>Find Care is a concept prototype · Product &amp; Technology Internship submission · <a href="case-study.html" style="color:var(--white); text-decoration:underline;">Read the case study</a></span>
+    </div>
+  </footer>
+
+  <nav class="app-tabbar" aria-label="Primary">
+    <a href="index.html"><svg class="icon" viewBox="0 0 24 24">
+        <path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </svg>Home</a>
+    <a href="search.html"><svg class="icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>Search</a>
+    <a href="emergency.html" class="tab-sos"><svg class="icon" viewBox="0 0 24 24">
+        <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+      </svg>SOS</a>
+    <a href="health.html"><svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z" />
+      </svg>Health</a>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>

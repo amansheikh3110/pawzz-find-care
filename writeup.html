@@ -1,0 +1,227 @@
+<title>Practo for Animals Concept</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --paper:#EEF0E8;
+    --sheet:#FFFFFF;
+    --surface-2:#F7F8F3;
+    --ink:#1C2A22;
+    --ink-soft:#445045;
+    --muted:#6E7A6D;
+    --line:#D8DED2;
+    --primary:#1F6F5C;
+    --primary-deep:#14493D;
+    --primary-tint:#DCEFE8;
+    --sos:#E2532D;
+    --sos-tint:#FBE4DA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1712;
+      --sheet:#17221B;
+      --surface-2:#1C2820;
+      --ink:#E9F0E6;
+      --ink-soft:#C1CDBE;
+      --muted:#8CA089;
+      --line:#2B3A31;
+      --primary:#4FBF9F;
+      --primary-deep:#8FE0C4;
+      --primary-tint:#173329;
+      --sos:#FF8259;
+      --sos-tint:#3A2119;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1712;
+    --sheet:#17221B;
+    --surface-2:#1C2820;
+    --ink:#E9F0E6;
+    --ink-soft:#C1CDBE;
+    --muted:#8CA089;
+    --line:#2B3A31;
+    --primary:#4FBF9F;
+    --primary-deep:#8FE0C4;
+    --primary-tint:#173329;
+    --sos:#FF8259;
+    --sos-tint:#3A2119;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:40px 18px 80px;
+  }
+  .sheet{
+    width:100%;
+    max-width:760px;
+    background:var(--sheet);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:52px 56px;
+    box-shadow:0 30px 60px -30px rgba(20,40,30,0.35);
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  .head{display:flex; flex-direction:column; gap:6px; border-bottom:1px solid var(--line); padding-bottom:22px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--primary-deep); font-weight:600;}
+  h1{font-family:'Fraunces',serif; font-weight:600; font-size:29px; margin:0; text-wrap:balance; letter-spacing:-.01em;}
+  .byline{font-size:13px; color:var(--muted); font-family:'IBM Plex Mono',monospace;}
+
+  section{display:flex; flex-direction:column; gap:10px;}
+  .s-head{display:flex; align-items:baseline; gap:10px;}
+  .s-num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--primary); font-weight:700; width:20px;}
+  h2{font-family:'Fraunces',serif; font-weight:600; font-size:17.5px; margin:0; color:var(--ink);}
+
+  .lede{font-size:13.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .lede b{color:var(--ink); font-weight:700;}
+
+  ol.feat, ul.plain{margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:7px;}
+  ol.feat li, ul.plain li{
+    font-size:13px; line-height:1.55; color:var(--ink-soft);
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  ol.feat{counter-reset:f;}
+  ol.feat li::before{
+    counter-increment:f; content:counter(f);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700;
+    background:var(--primary-tint); color:var(--primary-deep);
+    width:18px; height:18px; border-radius:5px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; margin-top:1px;
+  }
+  ul.plain li::before{content:"\2013"; color:var(--muted); flex-shrink:0;}
+  .feat li b, .plain li b{color:var(--ink); font-weight:700;}
+
+  .flow-line{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--primary-deep);
+    background:var(--primary-tint); border-radius:10px; padding:10px 14px;
+    display:flex; flex-wrap:wrap; gap:6px; align-items:center;
+  }
+  .proto-link{
+    display:flex; align-items:center; gap:8px; font-size:13px;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:11px 14px;
+  }
+  .proto-link a{color:var(--primary-deep); font-weight:700; text-decoration:none; font-family:'IBM Plex Mono',monospace; font-size:12.5px; word-break:break-all;}
+  .proto-link a:hover{text-decoration:underline;}
+
+  .ai-grid{display:flex; flex-direction:column; gap:10px;}
+  .ai-item{border:1px solid var(--line); border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:4px;}
+  .ai-item .name{font-size:13px; font-weight:800; color:var(--ink);}
+  .ai-item .desc{font-size:12.5px; color:var(--ink-soft); line-height:1.55;}
+  .ai-item .desc b{color:var(--ink); font-weight:700;}
+
+  .divider{border:none; border-top:1px dashed var(--line); margin:2px 0;}
+
+  .kv-grid{display:grid; grid-template-columns:110px 1fr; gap:6px 14px; font-size:12.5px;}
+  .kv-grid .k{font-family:'IBM Plex Mono',monospace; color:var(--muted); font-weight:600; padding-top:1px;}
+  .kv-grid .v{color:var(--ink-soft); line-height:1.55;}
+  .kv-grid .v b{color:var(--ink); font-weight:700;}
+
+  .mvp-cols{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .mvp-col{border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:6px;}
+  .mvp-col.build{background:var(--primary-tint);}
+  .mvp-col.skip{background:var(--surface-2); border:1px solid var(--line);}
+  .mvp-col h3{margin:0; font-size:12px; text-transform:uppercase; letter-spacing:.06em; font-family:'IBM Plex Mono',monospace;}
+  .mvp-col.build h3{color:var(--primary-deep);}
+  .mvp-col.skip h3{color:var(--muted);}
+  .mvp-col p{margin:0; font-size:12.5px; line-height:1.55; color:var(--ink-soft);}
+
+  .foot{display:flex; justify-content:space-between; gap:20px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; color:var(--muted); flex-wrap:wrap;}
+  .foot b{color:var(--ink-soft);}
+
+  @media print{
+    body{padding:0; background:#fff;}
+    .sheet{box-shadow:none; border:none; max-width:100%; padding:0;}
+  }
+  @media (max-width:560px){
+    .sheet{padding:30px 22px;}
+    .mvp-cols{grid-template-columns:1fr;}
+  }
+</style>
+
+<div class="sheet">
+  <div class="head">
+    <span class="eyebrow">Product &amp; Technology Intern &middot; Screening Assignment</span>
+    <h1>Practo for Animals &mdash; Product Concept</h1>
+    <span class="byline">Kashif Sheikh &middot; Submitted for Pawzz Foundation</span>
+  </div>
+
+  <section>
+    <div class="s-head"><span class="s-num">01</span><h2>Product Concept</h2></div>
+    <p class="lede"><b>Who:</b> pet parents in urban India (primary), street-animal rescuers and feeders (secondary), with vets, clinics, ambulances, NGOs and boarding facilities as the supply side.</p>
+    <p class="lede"><b>First problem:</b> in a crisis &mdash; an injured stray, a sick pet after hours &mdash; there is no reliable way to find a nearby, verified vet, ambulance or rescuer. Information is scattered across Google, Instagram and WhatsApp groups. This is the highest-intent, most frequent pain point, so discovery-in-a-crisis comes before routine browsing or booking.</p>
+    <p class="lede" style="margin-bottom:2px;"><b>Five MVP features:</b></p>
+    <ol class="feat">
+      <li><b>Location-based directory</b> of vets, ambulances, NGOs, rescuers and boarding facilities, filterable by distance and open-now status.</li>
+      <li><b>Verified provider profiles</b> &mdash; timings, services offered, one-tap call/WhatsApp.</li>
+      <li><b>Emergency SOS mode</b> &mdash; nearest 24&times;7 vet, ambulance or rescuer, ranked by ETA and verification.</li>
+      <li><b>Pet health profile</b> &mdash; basic pet details plus vaccination and visit history.</li>
+      <li><b>AI document upload</b> &mdash; a photo of a prescription or report becomes a structured timeline entry with reminders.</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="s-head"><span class="s-num">02</span><h2>User Flow &amp; Prototype</h2></div>
+    <div class="flow-line">Home / Search &#8594; Results (filtered list) &#8594; Provider Profile &#8594; Call / WhatsApp<br>Home &#8594; Emergency SOS &#8594; Ranked nearby options &#8594; Call</div>
+    <div class="proto-link">&#9656;&#65039; Clickable 4-screen prototype: <a href="https://claude.ai/code/artifact/27a67e40-3d7a-470e-a7bd-944abe8c5135" target="_blank" rel="noopener">claude.ai/code/artifact/27a67e40-3d7a-470e-a7bd-944abe8c5135</a></div>
+  </section>
+
+  <section>
+    <div class="s-head"><span class="s-num">03</span><h2>AI &amp; Automation</h2></div>
+    <div class="ai-grid">
+      <div class="ai-item">
+        <span class="name">Medical-document extraction</span>
+        <span class="desc"><b>Processes:</b> a photo of a prescription, vaccination card or lab report. <b>Automates:</b> manually re-typing medical history &mdash; the model extracts diagnosis, medicines and next-due dates and writes them straight into the pet's timeline, with reminders.</span>
+      </div>
+      <div class="ai-item">
+        <span class="name">Symptom triage &amp; routing</span>
+        <span class="desc"><b>Processes:</b> a free-text symptom description plus species/age. <b>Automates:</b> deciding urgent vs. routine and routing to the right provider type, instead of a blind directory search.</span>
+      </div>
+      <div class="ai-item">
+        <span class="name">Directory enrichment</span>
+        <span class="desc"><b>Processes:</b> unstructured listings pulled from Google, Instagram and WhatsApp Business. <b>Automates:</b> structuring, de-duplicating and flagging inconsistent entries &mdash; the manual ops work of building the directory.</span>
+      </div>
+      <div class="ai-item">
+        <span class="name">Rescue-story &amp; campaign copy</span>
+        <span class="desc"><b>Processes:</b> a rescuer's raw notes and photos. <b>Automates:</b> drafting a publishable rescue story or fundraiser post.</span>
+      </div>
+    </div>
+    <p class="lede"><b>Own concepts:</b> the emergency-first framing, ranking SOS results by ETA + verification (not ads), and using document-extraction to build a longitudinal pet health record are mine. The base "searchable directory" pattern is inspired by Practo/JustDial-style platforms, as named in the brief.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="s-head"><span class="s-num">04</span><h2>Technology</h2></div>
+    <div class="kv-grid">
+      <span class="k">Stack</span><span class="v"><b>Next.js</b> (mobile-responsive web) on Vercel; <b>Supabase</b> (Postgres + PostGIS, auth, file storage); <b>Claude API</b> for document extraction and triage chat.</span>
+      <span class="k">Integrations</span><span class="v">Google Maps/Places (location, geocoding) &middot; WhatsApp Business API (contact, reminders) &middot; Claude API (vision + text) &middot; Razorpay (donations) &middot; Firebase Cloud Messaging (push reminders).</span>
+      <span class="k">Connections</span><span class="v">Client &#8594; API layer &#8594; Postgres/PostGIS (providers, pets, records) + object storage (uploaded documents). The AI layer sits beside the API for extraction/triage; Maps, WhatsApp and Razorpay are called from the API layer as needed.</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="s-head"><span class="s-num">05</span><h2>MVP Thinking &mdash; 30 Days</h2></div>
+    <div class="mvp-cols">
+      <div class="mvp-col build">
+        <h3>Build</h3>
+        <p>Directory + geo-search, provider profiles, SOS flow, manual pet profile, and the AI document-upload feature &mdash; launched Gurgaon-only with 30&ndash;50 manually onboarded, verified listings.</p>
+      </div>
+      <div class="mvp-col skip">
+        <h3>Leave out</h3>
+        <p>Booking &amp; payments, native mobile apps, self-serve provider onboarding, reviews/ratings, AI chat triage (needs tuning), multi-city expansion.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span><b>Prototype:</b> see link in Section 2</span>
+    <span><b>Tools used:</b> Claude (Claude Code) for product thinking, prototype build and this write-up</span>
+  </div>
+</div>

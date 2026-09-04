@@ -1,0 +1,255 @@
+<title>Find Care Asset Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --paper:#F6F4EA; --sheet:#FFFFFF; --surface-2:#FBFAF4;
+    --ink:#17241D; --ink-soft:#425146; --muted:#71806F; --line:#E3E1D2;
+    --teal:#1F6F5C; --teal-deep:#123B32; --teal-mid:#2E8C71; --teal-tint:#DCEFE8;
+    --coral:#E2532D; --coral-deep:#B33E1F; --coral-tint:#FBE4DA;
+    --gold:#E8B94A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:'Manrope',system-ui,sans-serif;
+    display:flex; justify-content:center; padding:48px 18px 90px;
+  }
+  .sheet{ width:100%; max-width:860px; display:flex; flex-direction:column; gap:44px; }
+
+  .head{ display:flex; flex-direction:column; gap:10px; }
+  .eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal-deep); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,4vw,40px); margin:0; letter-spacing:-.01em; text-wrap:balance; }
+  .head p{ color:var(--ink-soft); font-size:15px; line-height:1.6; max-width:62ch; margin:0; }
+
+  section{ background:var(--sheet); border:1px solid var(--line); border-radius:20px; padding:32px clamp(20px,4vw,40px); }
+  .s-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:22px; }
+  .s-num{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--teal); background:var(--teal-tint); width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:22px; margin:0; }
+  h3{ font-family:'Manrope',sans-serif; font-weight:800; font-size:14px; margin:0 0 12px; }
+  p{ margin:0; }
+  .lede{ color:var(--ink-soft); font-size:14px; line-height:1.65; margin-bottom:22px; max-width:66ch; }
+
+  /* palette */
+  .swatch-row{ display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; margin-bottom:28px; }
+  .swatch{ border-radius:12px; padding:14px 12px; display:flex; flex-direction:column; gap:26px; }
+  .swatch .role{ font-size:11px; font-weight:700; }
+  .swatch .hex{ font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; }
+
+  /* type specimen */
+  .type-row{ display:flex; flex-direction:column; gap:16px; margin-bottom:28px; }
+  .type-item{ display:flex; align-items:baseline; gap:16px; border-bottom:1px solid var(--line); padding-bottom:14px; }
+  .type-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .type-item .tag{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted); width:88px; flex-shrink:0; text-transform:uppercase; letter-spacing:.06em; }
+  .type-item .sample{ font-size:22px; }
+  .f-fraunces{ font-family:'Fraunces',serif; font-weight:600; }
+  .f-manrope{ font-family:'Manrope',sans-serif; font-weight:700; }
+  .f-mono{ font-family:'IBM Plex Mono',monospace; font-weight:600; }
+
+  /* component + page grid */
+  .chip-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  .chip{ font-size:12.5px; font-weight:700; background:var(--surface-2); border:1px solid var(--line); padding:7px 13px; border-radius:999px; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13px; }
+  th{ text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); padding:0 12px 10px 0; font-weight:600; }
+  td{ padding:10px 12px 10px 0; border-top:1px solid var(--line); vertical-align:top; }
+  td.name{ font-weight:800; white-space:nowrap; }
+  td.desc{ color:var(--ink-soft); }
+
+  .note{ background:var(--teal-tint); border-radius:14px; padding:16px 18px; font-size:13.5px; line-height:1.6; color:var(--teal-deep); margin-bottom:28px; }
+  .note b{ color:var(--teal-deep); }
+
+  /* asset cards */
+  .asset-list{ display:flex; flex-direction:column; gap:18px; }
+  .asset-card{ border:1px solid var(--line); border-radius:16px; padding:20px 22px; display:flex; flex-direction:column; gap:12px; }
+  .asset-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap; }
+  .asset-name{ font-family:'Fraunces',serif; font-weight:600; font-size:17px; }
+  .asset-tags{ display:flex; gap:6px; flex-wrap:wrap; }
+  .tag{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:600; padding:4px 9px; border-radius:999px; white-space:nowrap; }
+  .tag-place{ background:var(--teal-tint); color:var(--teal-deep); }
+  .tag-spec{ background:var(--surface-2); color:var(--muted); border:1px solid var(--line); }
+  .asset-why{ font-size:13px; color:var(--ink-soft); line-height:1.55; }
+  .prompt{
+    background:var(--ink); color:#F1EFE3; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    line-height:1.6; border-radius:10px; padding:14px 16px; white-space:pre-wrap;
+  }
+  .prompt::before{ content:"PROMPT"; display:block; font-size:9.5px; letter-spacing:.14em; color:var(--gold); margin-bottom:8px; font-weight:700; }
+
+  .optional-flag{ background:var(--coral-tint); color:var(--coral-deep); }
+
+  .foot-note{ font-size:13px; color:var(--ink-soft); line-height:1.65; }
+  .foot-note b{ color:var(--ink); }
+
+  @media (max-width:560px){
+    section{ padding:24px 18px; }
+    .type-item{ flex-direction:column; gap:4px; }
+    .type-item .tag{ width:auto; }
+  }
+</style>
+
+<div class="sheet">
+  <div class="head">
+    <span class="eyebrow">Find Care · Build recap &amp; visual asset plan</span>
+    <h1>What we've built, and the images that will make it feel alive</h1>
+    <p>Part 1 recaps the design system and pages as they stand today. Part 2 is the actual ask: exactly which illustrations to generate, where each one goes, and a ready-to-paste prompt for every one.</p>
+  </div>
+
+  <section>
+    <div class="s-head"><span class="s-num">01</span><h2>What's built so far</h2></div>
+    <p class="lede">Find Care is a static, no-build-step site (HTML/CSS/JS — deploys to Vercel with zero config) built around one idea: in an animal emergency, finding a verified vet, ambulance or rescuer should take seconds, not a frantic Google/Instagram/WhatsApp search.</p>
+
+    <h3>Colour system</h3>
+    <div class="swatch-row">
+      <div class="swatch" style="background:var(--teal-deep); color:#fff;"><span class="role">Teal · deepest</span><span class="hex">#123B32</span></div>
+      <div class="swatch" style="background:var(--teal); color:#fff;"><span class="role">Teal · primary</span><span class="hex">#1F6F5C</span></div>
+      <div class="swatch" style="background:var(--teal-mid); color:#fff;"><span class="role">Teal · mid</span><span class="hex">#2E8C71</span></div>
+      <div class="swatch" style="background:var(--teal-tint); color:var(--teal-deep);"><span class="role">Teal · tint</span><span class="hex">#DCEFE8</span></div>
+      <div class="swatch" style="background:var(--coral); color:#fff;"><span class="role">Coral · emergency</span><span class="hex">#E2532D</span></div>
+      <div class="swatch" style="background:var(--coral-deep); color:#fff;"><span class="role">Coral · deep</span><span class="hex">#B33E1F</span></div>
+      <div class="swatch" style="background:var(--gold); color:var(--ink);"><span class="role">Gold · accent</span><span class="hex">#E8B94A</span></div>
+      <div class="swatch" style="background:var(--paper); color:var(--ink); border:1px solid var(--line);"><span class="role">Cream · ground</span><span class="hex">#F6F4EA</span></div>
+    </div>
+    <p class="lede" style="margin-top:-14px;">Teal carries the brand (nav, buttons, badges); coral is spent on exactly one thing — emergency actions — so it never loses urgency; gold is a quiet accent for ratings and reminders.</p>
+
+    <h3>Typography</h3>
+    <div class="type-row">
+      <div class="type-item"><span class="tag">Display</span><span class="sample f-fraunces">Fraunces — headlines &amp; the wordmark</span></div>
+      <div class="type-item"><span class="tag">Body / UI</span><span class="sample f-manrope">Manrope — everything interactive</span></div>
+      <div class="type-item"><span class="tag">Data</span><span class="sample f-mono">IBM Plex Mono — distances, ETAs, prompts</span></div>
+    </div>
+
+    <h3>Components in place</h3>
+    <div class="chip-grid">
+      <span class="chip">Two-tier nav + mobile bottom tab bar</span>
+      <span class="chip">Hero with layered blob illustration</span>
+      <span class="chip">Donate impact card + paw-print meter</span>
+      <span class="chip">Category grid</span>
+      <span class="chip">Provider card / list</span>
+      <span class="chip">Badges &amp; chips</span>
+      <span class="chip">"Send" animated CTA button</span>
+      <span class="chip">Fold-text headline reveal (GSAP)</span>
+      <span class="chip">AI upload wizard (3-step)</span>
+      <span class="chip">AI triage wizard (branching)</span>
+      <span class="chip">Health timeline</span>
+    </div>
+
+    <h3>Pages</h3>
+    <table>
+      <tr><th>Page</th><th>Purpose</th></tr>
+      <tr><td class="name">index.html</td><td class="desc">Landing — search, categories, nearby providers, AI teasers, donate card</td></tr>
+      <tr><td class="name">search.html</td><td class="desc">Filtered directory results with an illustrative map panel</td></tr>
+      <tr><td class="name">provider.html</td><td class="desc">Provider profile — overview / timings / reviews, sticky contact bar</td></tr>
+      <tr><td class="name">emergency.html</td><td class="desc">Emergency SOS — nearest help ranked by ETA</td></tr>
+      <tr><td class="name">health.html</td><td class="desc">Pet health timeline — AI-extracted and manual records</td></tr>
+      <tr><td class="name">upload.html</td><td class="desc">AI document-upload demo (photo → structured record)</td></tr>
+      <tr><td class="name">triage.html</td><td class="desc">AI symptom-triage demo (symptom → urgent/routine routing)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="s-head"><span class="s-num">02</span><h2>Visual asset plan</h2></div>
+    <p class="lede">Right now every icon on the site is a plain line-drawn SVG — clean, but it reads as a dashboard, not something built to help an animal. This plan adds real illustration where it earns an emotional reaction, without touching the small functional icons that already work fine.</p>
+
+    <div class="note">
+      <b>Icons vs. images — a recommendation, not just a list.</b> Small UI icons (search, phone, star, tab-bar glyphs) should stay as hand-drawn SVG: they need to work crisply at 16–24px in any colour, and AI image generators are inconsistent at that scale. Where AI-generated art earns its place is the six <b>emotional illustrations</b> below — hero moments where a dog, not a line icon, is the point. I've included one exception: a brand mascot mark, since that's a single distinctive asset worth generating rather than hand-drawing.
+    </div>
+
+    <div class="note" style="background:var(--coral-tint); color:var(--coral-deep);">
+      <b>On "animated."</b> Most AI image tools (Midjourney, DALL·E, etc.) generate still frames. Send me stills as transparent PNGs and I'll add real motion in CSS — a gentle float, a gaze that shifts on scroll, a wagging-tail loop for the icon-sized paw mark. If you can also generate a short looping clip (via Runway/Pika/Kaiber) for the hero or donate image specifically, even better — I can drop that in as a background video loop instead of a still.
+    </div>
+
+    <h3 style="margin-top:4px;">Core set — 6 illustrations</h3>
+    <div class="asset-list">
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">1. Home hero companion</span>
+          <div class="asset-tags"><span class="tag tag-place">index.html — hero</span><span class="tag tag-spec">1:1 · 1200×1200 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">Sits beside the "Because emergencies don't wait for Google" headline — the first thing anyone sees.</p>
+        <div class="prompt">Flat 2D vector illustration of a small joyful Indian street dog (indie breed) sitting happily, tail mid-wag, next to a gentle open human palm offering a treat. Solid flat colour fills only, no gradients, no outlines, rounded friendly shapes. Colour palette: deep teal #1F6F5C, coral-orange #E2532D, soft cream #F6F4EA, warm gold #E8B94A. Centred composition, transparent background, no text, no drop shadows, clean vector illustration in a modern NGO/startup style.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">2. Emergency hero</span>
+          <div class="asset-tags"><span class="tag tag-place">emergency.html — top</span><span class="tag tag-spec">4:3 · 1600×1200 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">Sets the tone above the SOS card: urgent, but caring rather than frightening.</p>
+        <div class="prompt">Flat 2D vector illustration of a caring veterinarian gently cradling a small injured dog wrapped in a soft blanket, calm and reassuring expression, hopeful not distressing mood. Flat solid colour fills, no gradients, no outlines. Colour palette: deep teal #1F6F5C, coral-orange #E2532D, cream #F6F4EA. A subtle heartbeat-line motif in the background. Transparent background, no text, centred composition, modern flat vector illustration style.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">3. AI document-scan teaser</span>
+          <div class="asset-tags"><span class="tag tag-place">index.html — "Snap a prescription" card</span><span class="tag tag-spec">1:1 · 900×900 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">Makes the AI-extraction feature tangible instead of an abstract clipboard icon.</p>
+        <div class="prompt">Flat 2D vector illustration of a dog's paw gently resting on a glowing smartphone screen displaying a simple scanning-line animation over a document icon. Flat solid colours only, no gradients. Palette: deep teal #1F6F5C, coral-orange #E2532D, cream #F6F4EA. Playful, modern, minimal shapes, transparent background, no text, centred composition.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">4. AI triage teaser</span>
+          <div class="asset-tags"><span class="tag tag-place">index.html — "Ask Pawzz AI" card</span><span class="tag tag-spec">1:1 · 900×900 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">Pairs with the triage feature — a worried-but-hopeful look, not a scary one.</p>
+        <div class="prompt">Flat 2D vector illustration of a small dog looking up curiously at a friendly rounded speech bubble containing a simple paw-print icon. Warm, reassuring mood. Flat solid colours, no gradients. Palette: deep teal #1F6F5C, coral-orange #E2532D, warm gold #E8B94A, cream background. Transparent background, no text, centred composition, modern vector illustration.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">5. Health timeline hero</span>
+          <div class="asset-tags"><span class="tag tag-place">health.html — top, beside pet card</span><span class="tag tag-spec">16:9 · 1600×900 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">The "good news" page — should feel energetic, not clinical.</p>
+        <div class="prompt">Flat 2D vector illustration of a happy healthy dog mid-jump with ears flopping, joyful energetic pose, a small vaccination record card with a checkmark floating beside it. Flat solid colours, no gradients, no outlines. Palette: deep teal #1F6F5C, coral-orange #E2532D, cream #F6F4EA. Transparent background, no text, dynamic but centred composition.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">6. Donate section hero</span>
+          <div class="asset-tags"><span class="tag tag-place">index.html — new donate card</span><span class="tag tag-spec">3:4 · 1200×1600 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">Carries the emotional weight next to the paw-print progress meter and "Donate Now" button — this is the one most worth getting right.</p>
+        <div class="prompt">Flat 2D vector illustration of a rescued street dog looking up with big hopeful eyes toward two gently cupped human hands offering food. Warm, emotionally touching but hopeful — not sad or distressing. Flat solid colour fills, no gradients, no outlines, rounded friendly shapes. Palette: deep teal #1F6F5C, coral-orange #E2532D, warm gold #E8B94A, cream #F6F4EA. Transparent background, no text, portrait composition with the dog in the lower third and the hands in the upper third.</div>
+      </div>
+
+    </div>
+
+    <h3 style="margin-top:30px;">Optional / stretch — 3 more</h3>
+    <div class="asset-list">
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">7. Paw-print pattern texture</span>
+          <div class="asset-tags"><span class="tag tag-place">Footer / section dividers, low-opacity</span><span class="tag tag-spec">Seamless tile · 800×800 · PNG</span></div>
+        </div>
+        <p class="asset-why">Decorative only — skip this one if you'd rather I generate it directly in CSS, which is honestly the easier path for a seamless tile.</p>
+        <div class="prompt">Seamless tileable pattern of simple minimal flat paw prints scattered at varied sizes and rotations, very low contrast, soft cream background #F6F4EA with paw prints in a slightly darker teal tint #DCEFE8. Flat vector, no gradients, subtle and non-distracting, seamless edges for tiling.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">8. Brand mascot mark <span class="tag optional-flag" style="margin-left:6px;">only icon-style asset worth AI-generating</span></span>
+          <div class="asset-tags"><span class="tag tag-place">Nav logo / favicon / footer</span><span class="tag tag-spec">512×512 · PNG, transparent</span></div>
+        </div>
+        <p class="asset-why">A distinctive mark to replace the geometric paw badge currently drawn in CSS/SVG in the hero.</p>
+        <div class="prompt">Minimal flat vector icon combining a friendly dog's face silhouette merging subtly into a paw-print shape, single solid deep teal colour #1F6F5C, no gradients, no outlines, no shading, geometric and simple enough to read clearly at 40×40 pixels, centred on a transparent background, logo/icon style.</div>
+      </div>
+
+      <div class="asset-card">
+        <div class="asset-top">
+          <span class="asset-name">9. Clinic / provider illustration</span>
+          <div class="asset-tags"><span class="tag tag-place">search.html or provider.html</span><span class="tag tag-spec">4:3 · 1600×1200 · PNG</span></div>
+        </div>
+        <p class="asset-why">Nice-to-have warmth on the more transactional directory pages.</p>
+        <div class="prompt">Flat 2D vector illustration of a friendly veterinarian standing outside a small welcoming clinic building with a wagging-tail dog beside them. Flat solid colours, no gradients, no outlines. Palette: deep teal #1F6F5C, coral-orange #E2532D, cream #F6F4EA. Transparent or simple cream background, no text, landscape composition, modern flat illustration style.</div>
+      </div>
+
+    </div>
+
+    <p class="foot-note" style="margin-top:26px;">
+      <b>Handing these back:</b> any image generator works (Midjourney, DALL·E, Gemini, Ideogram…) — paste the prompt as-is, then tweak if the palette drifts. Name the files roughly after the numbers above (<span class="f-mono" style="font-size:12px;">01-hero-companion.png</span>, etc.) so they're easy to match up, and send them over — I'll drop each into its named spot and add the CSS motion.
+    </p>
+  </section>
+</div>

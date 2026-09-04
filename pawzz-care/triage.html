@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Pawzz AI — Pawzz Find Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/send-button.css">
+<link rel="icon" type="image/png" href="assets/images/brand-mark.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-top">
+    <div class="container nav-top-inner">
+      <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/images/brand-mark.png" alt=""></span>Pawzz<span class="dot">.</span></a>
+    </div>
+  </div>
+  <div class="nav-bottom">
+    <div class="container">
+      <nav class="nav-links">
+        <a href="#">Adoption</a>
+        <a href="#">Campaign</a>
+        <a href="#">Missing Pets</a>
+        <a href="#">Memory</a>
+        <a href="index.html" class="active new">Find Care</a>
+        <a href="#">Get Involved</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding:28px 24px 60px; max-width:600px;">
+  <a class="back-link" href="index.html">&larr; Back to Find Care</a>
+  <span class="eyebrow">AI symptom triage</span>
+  <h1 style="font-size:26px; margin-top:8px;" data-fold data-fold-trigger="mount">What's going on with your pet?</h1>
+  <p class="muted" style="margin-top:8px;">Two quick questions, then we'll tell you whether this is urgent.</p>
+
+  <div id="triage-wizard" style="margin-top:28px;">
+    <div class="wizard-steps">
+      <span class="ws-dot done"></span><span class="ws-dot"></span><span class="ws-dot"></span>
+    </div>
+
+    <div id="tri-step-1" style="display:flex; flex-direction:column; gap:10px;">
+      <button class="tri-option" data-symptom="Difficulty breathing" data-urgent="true">
+        <span class="oi" style="background:var(--coral-100); color:var(--coral-600);"><svg class="icon" viewBox="0 0 24 24"><path d="M6 12h2l2 4 4-8 2 4h2"/></svg></span>
+        Difficulty breathing
+      </button>
+      <button class="tri-option" data-symptom="Bleeding or a visible wound" data-urgent="true">
+        <span class="oi" style="background:var(--coral-100); color:var(--coral-600);"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2 4 12h6l-2 10 10-13h-6z"/></svg></span>
+        Bleeding or a visible wound
+      </button>
+      <button class="tri-option" data-symptom="Vomiting" data-urgent="false">
+        <span class="oi" style="background:var(--orange-100); color:var(--orange-600);"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 13c1 1.5 2.3 2 4 2s3-.5 4-2"/></svg></span>
+        Vomiting
+      </button>
+      <button class="tri-option" data-symptom="Not eating" data-urgent="false">
+        <span class="oi" style="background:var(--yellow-400); color:var(--ink-900);"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg></span>
+        Not eating
+      </button>
+      <button class="tri-option" data-symptom="Low energy / lethargy" data-urgent="false">
+        <span class="oi" style="background:var(--purple-100); color:var(--purple-800);"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        Low energy / lethargy
+      </button>
+    </div>
+
+    <div id="tri-step-2" style="display:flex; flex-direction:column; gap:10px;" hidden>
+      <p class="muted" style="margin-bottom:4px;">How long has this been going on?</p>
+      <button class="tri-option" data-duration="now-worsening">Just started, getting worse fast</button>
+      <button class="tri-option" data-duration="today">Since today</button>
+      <button class="tri-option" data-duration="1-2-days">1–2 days</button>
+      <button class="tri-option" data-duration="week-plus">A week or more</button>
+    </div>
+
+    <div id="tri-step-3" hidden>
+      <div id="triage-result-banner" class="result-banner">
+        <span id="triage-badge" class="badge">Result</span>
+        <p id="triage-explain" class="muted" style="margin-top:12px; font-size:14px; line-height:1.6;"></p>
+      </div>
+      <div style="display:flex; gap:12px; margin-top:18px;">
+        <button id="triage-restart" class="js-send-btn" data-label="Start over" data-sent="Reset" data-variant="light"></button>
+        <a id="triage-cta" href="#" class="btn btn-primary btn-block">Continue</a>
+      </div>
+      <p class="muted" style="font-size:11.5px; text-align:center; margin-top:16px;">This is a preliminary read, not a diagnosis — always consult a vet.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom:14px;">Pawzz<span class="dot">.</span></a>
+      <p style="max-width:32ch; font-size:13.5px; line-height:1.7;">Balancing the human-animal ecosystem in India — rescue, adoption, and now, instant access to verified animal care.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul><li><a href="#">Adoption</a></li><li><a href="#">Campaigns</a></li><li><a href="#">Missing Pets</a></li><li><a href="#">Memory Wall</a></li></ul>
+    </div>
+    <div>
+      <h4>Find Care</h4>
+      <ul><li><a href="search.html">Search Providers</a></li><li><a href="emergency.html">Emergency SOS</a></li><li><a href="health.html">Pet Health</a></li><li><a href="triage.html">Ask Pawzz AI</a></li></ul>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <ul><li><a href="#">Volunteer</a></li><li><a href="#">Donate</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pawzz Foundation, Gurgaon</span>
+    <span>Find Care is a concept prototype · Product &amp; Technology Internship submission · <a href="case-study.html" style="color:var(--white); text-decoration:underline;">Read the case study</a></span>
+  </div>
+</footer>
+
+<nav class="app-tabbar" aria-label="Primary">
+  <a href="index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="search.html"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search</a>
+  <a href="emergency.html" class="tab-sos"><svg class="icon" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>SOS</a>
+  <a href="health.html"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>Health</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

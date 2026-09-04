@@ -1,0 +1,547 @@
+<title>Pawzz Emergency Prototype</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root{
+    --paper:#EEF0E8;
+    --surface:#FFFFFF;
+    --surface-2:#F7F8F3;
+    --ink:#1C2A22;
+    --ink-soft:#445045;
+    --muted:#6E7A6D;
+    --line:#D8DED2;
+    --primary:#1F6F5C;
+    --primary-deep:#14493D;
+    --primary-tint:#DCEFE8;
+    --sos:#E2532D;
+    --sos-deep:#B33E1F;
+    --sos-tint:#FBE4DA;
+    --bezel:#111A15;
+    --shadow: 0 30px 60px -25px rgba(20,40,30,0.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1712;
+      --surface:#17221B;
+      --surface-2:#1C2820;
+      --ink:#E9F0E6;
+      --ink-soft:#C1CDBE;
+      --muted:#8CA089;
+      --line:#2B3A31;
+      --primary:#4FBF9F;
+      --primary-deep:#2E8C71;
+      --primary-tint:#173329;
+      --sos:#FF8259;
+      --sos-deep:#FF6538;
+      --sos-tint:#3A2119;
+      --bezel:#060B08;
+      --shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1712;
+    --surface:#17221B;
+    --surface-2:#1C2820;
+    --ink:#E9F0E6;
+    --ink-soft:#C1CDBE;
+    --muted:#8CA089;
+    --line:#2B3A31;
+    --primary:#4FBF9F;
+    --primary-deep:#2E8C71;
+    --primary-tint:#173329;
+    --sos:#FF8259;
+    --sos-deep:#FF6538;
+    --sos-tint:#3A2119;
+    --bezel:#060B08;
+    --shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:48px 20px 72px;
+    gap:36px;
+  }
+
+  .masthead{
+    max-width:720px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--primary-deep);
+    font-weight:600;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(28px,4vw,38px);
+    margin:0;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .masthead p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:15px;
+    line-height:1.55;
+    text-wrap:balance;
+  }
+
+  /* flow strip */
+  .flow{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:10px;
+    box-shadow:var(--shadow);
+    flex-wrap:wrap;
+    justify-content:center;
+    max-width:820px;
+  }
+  .flow-step{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:none;
+    background:transparent;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-family:'Manrope',sans-serif;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-weight:600;
+    transition:background .15s ease, color .15s ease;
+  }
+  .flow-step .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    width:20px; height:20px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--surface-2);
+    color:var(--muted);
+  }
+  .flow-step:hover{background:var(--surface-2);}
+  .flow-step.active{background:var(--primary-tint); color:var(--primary-deep);}
+  .flow-step.active .num{background:var(--primary); color:#fff;}
+  .flow-step[data-screen="sos"].active{background:var(--sos-tint); color:var(--sos-deep);}
+  .flow-step[data-screen="sos"].active .num{background:var(--sos);}
+  .flow-arrow{color:var(--line); font-size:14px;}
+
+  /* device */
+  .device{
+    width:390px;
+    max-width:92vw;
+    background:var(--bezel);
+    border-radius:46px;
+    padding:14px;
+    box-shadow:var(--shadow);
+  }
+  .device-screen{
+    position:relative;
+    background:var(--surface);
+    border-radius:34px;
+    overflow:hidden;
+    height:760px;
+    display:flex;
+    flex-direction:column;
+  }
+  .statusbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 26px 4px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink);
+    flex-shrink:0;
+  }
+  .screens{
+    flex:1;
+    overflow:hidden;
+    position:relative;
+  }
+  .screen{
+    position:absolute;
+    inset:0;
+    overflow-y:auto;
+    padding:6px 20px 90px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .screen::-webkit-scrollbar{display:none;}
+
+  .tabbar{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    display:flex;
+    padding:10px 10px 14px;
+    gap:4px;
+  }
+  .tab{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    border:none;
+    background:transparent;
+    padding:6px 4px;
+    border-radius:12px;
+    cursor:pointer;
+    color:var(--muted);
+    font-family:'Manrope',sans-serif;
+    font-size:10.5px;
+    font-weight:700;
+  }
+  .tab .dot{width:20px;height:20px;border-radius:7px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:12px;}
+  .tab.active{color:var(--primary-deep);}
+  .tab.active .dot{background:var(--primary-tint);}
+  .tab.sos .dot{background:var(--sos);color:#fff;}
+  .tab.sos{color:var(--sos-deep);}
+  .home-indicator{
+    position:absolute; bottom:6px; left:50%; transform:translateX(-50%);
+    width:120px; height:4px; border-radius:2px; background:var(--ink); opacity:.25;
+  }
+
+  /* shared bits */
+  .row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .location-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:999px; padding:6px 12px;
+    font-size:12px; font-weight:600; color:var(--ink-soft);
+  }
+  .hello{font-family:'Fraunces',serif; font-size:21px; font-weight:600;}
+  .searchbar{
+    display:flex; align-items:center; gap:10px;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:14px; padding:12px 14px; color:var(--muted); font-size:13.5px; font-weight:600;
+  }
+  .chiprow{display:flex; gap:8px; overflow-x:auto; padding-bottom:2px;}
+  .chip{
+    flex-shrink:0;
+    border:1px solid var(--line); background:var(--surface);
+    border-radius:999px; padding:8px 14px; font-size:12.5px; font-weight:700; color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .chip.on{background:var(--primary); border-color:var(--primary); color:#fff;}
+
+  .sos-banner{
+    background:linear-gradient(135deg,var(--sos),var(--sos-deep));
+    border-radius:18px; padding:18px; color:#fff;
+    display:flex; flex-direction:column; gap:10px;
+    cursor:pointer; border:none; text-align:left; font-family:inherit;
+  }
+  .sos-banner .label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; opacity:.85;}
+  .sos-banner .title{font-family:'Fraunces',serif; font-size:19px; font-weight:600;}
+  .sos-banner .cta{font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:6px;}
+
+  .section-title{display:flex; justify-content:space-between; align-items:baseline;}
+  .section-title h3{margin:0; font-size:14.5px; font-weight:800;}
+  .section-title span{font-size:12px; color:var(--primary-deep); font-weight:700; cursor:pointer;}
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:14px; display:flex; gap:12px; align-items:center; cursor:pointer;
+  }
+  .thumb{width:52px; height:52px; border-radius:12px; flex-shrink:0; background:var(--primary-tint); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; color:var(--primary-deep); font-size:18px;}
+  .card-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
+  .card-name{font-size:14px; font-weight:800;}
+  .card-meta{font-size:12px; color:var(--muted); display:flex; gap:8px; align-items:center; font-family:'IBM Plex Mono',monospace;}
+  .badge{font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px;}
+  .badge.open{background:var(--primary-tint); color:var(--primary-deep);}
+  .badge.closed{background:var(--surface-2); color:var(--muted);}
+  .badge.verified{background:var(--primary); color:#fff;}
+  .rating{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:var(--ink);}
+
+  .back-row{display:flex; align-items:center; gap:10px; padding-top:6px;}
+  .back-btn{
+    width:32px; height:32px; border-radius:10px; border:1px solid var(--line); background:var(--surface);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink); font-size:16px;
+  }
+  .back-title{font-size:15px; font-weight:800;}
+  .back-sub{font-size:11.5px; color:var(--muted); font-family:'IBM Plex Mono',monospace;}
+
+  .profile-banner{
+    height:120px; border-radius:16px;
+    background:linear-gradient(135deg,var(--primary-tint),var(--surface-2));
+    display:flex; align-items:flex-end; padding:14px;
+  }
+  .profile-banner .name{font-family:'Fraunces',serif; font-size:20px; font-weight:600;}
+  .kv-table{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .kv-row{display:flex; justify-content:space-between; padding:10px 14px; font-size:12.5px; border-bottom:1px solid var(--line);}
+  .kv-row:last-child{border-bottom:none;}
+  .kv-row .k{color:var(--muted); font-weight:600;}
+  .kv-row .v{font-family:'IBM Plex Mono',monospace; font-weight:600;}
+
+  .action-bar{position:sticky; bottom:0; display:flex; gap:10px; padding:10px 0 4px; background:var(--surface);}
+  .btn{flex:1; border:none; border-radius:12px; padding:13px; font-weight:800; font-size:13.5px; cursor:pointer; font-family:'Manrope',sans-serif;}
+  .btn.primary{background:var(--primary); color:#fff;}
+  .btn.outline{background:var(--surface); border:1.5px solid var(--line); color:var(--ink);}
+
+  .sos-screen{background:var(--sos-tint);}
+  .sos-head{display:flex; flex-direction:column; gap:4px; padding-top:4px;}
+  .sos-head .tag{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--sos-deep); font-weight:700;}
+  .sos-head h2{margin:0; font-family:'Fraunces',serif; font-size:24px; color:var(--sos-deep);}
+  .toggle-pair{display:flex; gap:8px; background:var(--surface); padding:5px; border-radius:12px; border:1px solid var(--line);}
+  .toggle-pair button{flex:1; border:none; background:transparent; padding:10px; border-radius:9px; font-weight:800; font-size:12.5px; cursor:pointer; color:var(--ink-soft);}
+  .toggle-pair button.on{background:var(--sos); color:#fff;}
+  .sos-card{background:var(--surface); border-radius:16px; padding:14px; display:flex; flex-direction:column; gap:10px; border:1px solid var(--line);}
+  .sos-card .row1{display:flex; justify-content:space-between; align-items:center;}
+  .eta{font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13px; color:var(--sos-deep);}
+  .sos-note{font-size:11.5px; color:var(--ink-soft); text-align:center;}
+
+  .footer-note{max-width:620px; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.6;}
+  .footer-note b{color:var(--ink-soft);}
+</style>
+
+<div class="masthead">
+  <div class="eyebrow">Product concept prototype — Pawzz Foundation</div>
+  <h1>Pawzz: emergency-first animal care discovery</h1>
+  <p>A clickable walkthrough of the core loop — find a verified vet, ambulance or rescuer nearby, and get help fast in a crisis. Tap the steps below or tap inside the screen itself.</p>
+</div>
+
+<div class="flow" id="flow">
+  <button class="flow-step active" data-screen="home"><span class="num">1</span>Home / Search</button>
+  <span class="flow-arrow">&#8594;</span>
+  <button class="flow-step" data-screen="results"><span class="num">2</span>Results</button>
+  <span class="flow-arrow">&#8594;</span>
+  <button class="flow-step" data-screen="profile"><span class="num">3</span>Provider profile</button>
+  <span class="flow-arrow">&#8594;</span>
+  <button class="flow-step" data-screen="sos"><span class="num">4</span>Emergency SOS</button>
+</div>
+
+<div class="device">
+  <div class="device-screen">
+    <div class="statusbar"><span>9:41</span><span>Pawzz</span><span>&#9679;&#9679;&#9679;</span></div>
+
+    <div class="screens">
+
+      <!-- SCREEN 1: HOME -->
+      <section class="screen" id="screen-home">
+        <div class="row" style="padding-top:8px;">
+          <div class="hello">Hi Aditi</div>
+          <div class="location-pill">Sushant Lok II &#9662;</div>
+        </div>
+        <div class="searchbar">Search vets, ambulance, NGOs near you&hellip;</div>
+        <div class="chiprow">
+          <div class="chip on">All</div>
+          <div class="chip">Vet Clinic</div>
+          <div class="chip">Ambulance</div>
+          <div class="chip">NGO / Rescuer</div>
+          <div class="chip">Boarding</div>
+        </div>
+
+        <button class="sos-banner" data-goto="sos">
+          <div class="label">Animal in danger?</div>
+          <div class="title">Get emergency help now</div>
+          <div class="cta">Open Emergency SOS &#8594;</div>
+        </button>
+
+        <div class="section-title"><h3>Open near you</h3><span data-goto="results">See all</span></div>
+
+        <div class="card" data-goto="profile">
+          <div class="thumb">C9</div>
+          <div class="card-body">
+            <div class="card-name">Cloud9 Pet Clinic</div>
+            <div class="card-meta"><span class="badge open">Open</span> 0.8 km <span class="rating">4.8&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">PS</div>
+          <div class="card-body">
+            <div class="card-name">PawSafe Animal Ambulance</div>
+            <div class="card-meta"><span class="badge open">24&times;7</span> 1.4 km <span class="rating">4.6&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">GA</div>
+          <div class="card-body">
+            <div class="card-name">Gurugram Animal Welfare Trust</div>
+            <div class="card-meta"><span class="badge closed">Closed</span> 2.1 km <span class="rating">4.7&#9733;</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: RESULTS -->
+      <section class="screen" id="screen-results" hidden>
+        <div class="back-row">
+          <button class="back-btn" data-goto="home">&#8592;</button>
+          <div>
+            <div class="back-title">Vet clinics &middot; Sushant Lok II</div>
+            <div class="back-sub">12 results within 3 km</div>
+          </div>
+        </div>
+        <div class="chiprow">
+          <div class="chip on">Open now</div>
+          <div class="chip">&lt; 2 km</div>
+          <div class="chip">24&times;7</div>
+          <div class="chip">Top rated</div>
+        </div>
+
+        <div class="card" data-goto="profile">
+          <div class="thumb">C9</div>
+          <div class="card-body">
+            <div class="card-name">Cloud9 Pet Clinic</div>
+            <div class="card-meta"><span class="badge verified">Verified</span> 0.8 km <span class="rating">4.8&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">SV</div>
+          <div class="card-body">
+            <div class="card-name">Sector 56 Pet Hospital</div>
+            <div class="card-meta"><span class="badge open">Open</span> 1.1 km <span class="rating">4.5&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">DL</div>
+          <div class="card-body">
+            <div class="card-name">DLF Phase 3 Vet Care</div>
+            <div class="card-meta"><span class="badge open">Open</span> 1.9 km <span class="rating">4.4&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">MG</div>
+          <div class="card-body">
+            <div class="card-name">MG Road Vet &amp; Emergency</div>
+            <div class="card-meta"><span class="badge open">24&times;7</span> 2.4 km <span class="rating">4.7&#9733;</span></div>
+          </div>
+        </div>
+        <div class="card" data-goto="profile">
+          <div class="thumb">WT</div>
+          <div class="card-body">
+            <div class="card-name">Wagging Tails Boarding</div>
+            <div class="card-meta"><span class="badge closed">Closed</span> 2.8 km <span class="rating">4.3&#9733;</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: PROFILE -->
+      <section class="screen" id="screen-profile" hidden>
+        <div class="back-row">
+          <button class="back-btn" data-goto="results">&#8592;</button>
+          <div>
+            <div class="back-title">Provider profile</div>
+            <div class="back-sub">0.8 km &middot; Sushant Lok II</div>
+          </div>
+        </div>
+        <div class="profile-banner"><div class="name">Cloud9 Pet Clinic</div></div>
+        <div class="chiprow">
+          <span class="badge verified" style="padding:5px 10px;">Verified</span>
+          <span class="rating">4.8&#9733; (312 reviews)</span>
+        </div>
+        <div class="kv-table">
+          <div class="kv-row"><span class="k">Address</span><span class="v">Shop 4, DLF Galleria, SL-2</span></div>
+          <div class="kv-row"><span class="k">Mon&ndash;Sat</span><span class="v">9:00&ndash;21:00</span></div>
+          <div class="kv-row"><span class="k">Sunday</span><span class="v">10:00&ndash;14:00</span></div>
+          <div class="kv-row"><span class="k">Ambulance</span><span class="v">Available</span></div>
+        </div>
+        <div class="section-title"><h3>Services</h3></div>
+        <div class="chiprow">
+          <div class="chip">General checkup</div>
+          <div class="chip">Vaccination</div>
+          <div class="chip">Surgery</div>
+          <div class="chip">Grooming</div>
+        </div>
+        <div class="action-bar">
+          <button class="btn outline">WhatsApp</button>
+          <button class="btn primary">Call clinic</button>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: SOS -->
+      <section class="screen sos-screen" id="screen-sos" hidden>
+        <div class="sos-head">
+          <span class="tag">Emergency mode</span>
+          <h2>Animal Emergency</h2>
+          <span class="back-sub">Detected: MG Road, near Sector 28</span>
+        </div>
+        <div class="toggle-pair">
+          <button class="on">My pet</button>
+          <button>Street animal</button>
+        </div>
+
+        <div class="sos-card">
+          <div class="row1"><span class="card-name">PawSafe Animal Ambulance</span><span class="eta">8 min ETA</span></div>
+          <div class="card-meta">1.4 km &middot; 24&times;7 &middot; <span class="badge verified">Verified</span></div>
+          <button class="btn primary" style="width:100%;">Call ambulance</button>
+        </div>
+        <div class="sos-card">
+          <div class="row1"><span class="card-name">MG Road Vet &amp; Emergency</span><span class="eta">12 min ETA</span></div>
+          <div class="card-meta">2.4 km &middot; 24&times;7 vet on duty</div>
+          <button class="btn outline" style="width:100%;">Call clinic</button>
+        </div>
+        <div class="sos-card">
+          <div class="row1"><span class="card-name">Gurugram Animal Welfare Trust</span><span class="eta">15 min ETA</span></div>
+          <div class="card-meta">3.0 km &middot; Street rescue team</div>
+          <button class="btn outline" style="width:100%;">Contact rescuer</button>
+        </div>
+        <div class="sos-note">Ranked by distance, live availability and verification &mdash; not by ads.</div>
+      </section>
+
+    </div>
+
+    <div class="tabbar" id="tabbar">
+      <button class="tab active" data-goto="home"><span class="dot">&#8962;</span>Home</button>
+      <button class="tab" data-goto="results"><span class="dot">&#8981;</span>Search</button>
+      <button class="tab sos" data-goto="sos"><span class="dot">!</span>SOS</button>
+      <button class="tab" data-goto="profile"><span class="dot">&#9829;</span>Saved</button>
+    </div>
+    <div class="home-indicator"></div>
+  </div>
+</div>
+
+<p class="footer-note"><b>How to use:</b> tap the numbered steps above, the bottom tab bar, or any card inside the screen &mdash; navigation is fully wired between all four screens. Built as a static interactive mock (no backend); content is illustrative, not real listings.</p>
+
+<script>
+  const screens = ['home','results','profile','sos'];
+  function showScreen(id){
+    screens.forEach(s=>{
+      document.getElementById('screen-'+s).hidden = (s!==id);
+    });
+    document.querySelectorAll('.flow-step').forEach(el=>{
+      el.classList.toggle('active', el.dataset.screen===id);
+    });
+    document.querySelectorAll('.tab').forEach(el=>{
+      el.classList.toggle('active', el.dataset.goto===id);
+    });
+    document.querySelector('.device-screen').scrollTop = 0;
+    const activeScreen = document.getElementById('screen-'+id);
+    if(activeScreen) activeScreen.scrollTop = 0;
+  }
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.addEventListener('click', ()=> showScreen(el.dataset.goto));
+  });
+  document.querySelectorAll('.flow-step').forEach(el=>{
+    el.addEventListener('click', ()=> showScreen(el.dataset.screen));
+  });
+  document.querySelectorAll('.toggle-pair button').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+      this.classList.add('on');
+    });
+  });
+</script>

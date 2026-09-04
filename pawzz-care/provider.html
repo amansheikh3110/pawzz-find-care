@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud9 Pet Clinic — Pawzz Find Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/send-button.css">
+<link rel="icon" type="image/png" href="assets/images/brand-mark.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-top">
+    <div class="container nav-top-inner">
+      <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/images/brand-mark.png" alt=""></span>Pawzz<span class="dot">.</span></a>
+    </div>
+  </div>
+  <div class="nav-bottom">
+    <div class="container">
+      <nav class="nav-links">
+        <a href="#">Adoption</a>
+        <a href="#">Campaign</a>
+        <a href="#">Missing Pets</a>
+        <a href="#">Memory</a>
+        <a href="index.html" class="active new">Find Care</a>
+        <a href="#">Get Involved</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container has-sticky-contact" style="padding:28px 24px 60px;">
+  <a class="back-link" href="search.html">&larr; Back to results</a>
+
+  <div class="page-art page-art-sm">
+    <img src="assets/images/clinic-provider-illustration.png" alt="A friendly veterinarian welcoming a dog outside a clinic">
+  </div>
+
+  <div class="profile-hero">
+    <span class="eyebrow" style="color:var(--purple-600);">Vet Clinic</span>
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <h1 style="font-size:clamp(24px,3vw,32px);" data-fold data-fold-trigger="mount">Cloud9 Pet Clinic</h1>
+      <span class="badge badge-verified">Verified</span>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+      <span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 6.9L12 17.8 5.8 21.1l1.4-6.9L2 9.3l7-.8z"/></svg>4.8 · 312 reviews</span>
+      <span class="badge badge-open">Open now</span>
+      <span class="mono muted">0.8 km · Shop 4, DLF Galleria, Sushant Lok II</span>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-overview">Overview</button>
+    <button class="tab-btn" data-tab="tab-timings">Timings</button>
+    <button class="tab-btn" data-tab="tab-reviews">Reviews (312)</button>
+  </div>
+
+  <div id="tab-overview" class="tab-panel" style="padding-top:22px; display:flex; flex-direction:column; gap:22px;">
+    <p class="muted" style="max-width:64ch;">Cloud9 Pet Clinic is a full-service small-animal clinic offering general checkups, vaccination, minor surgery and grooming, with an on-call ambulance for emergencies within 3 km.</p>
+    <div>
+      <h3 style="margin-bottom:10px;">Services</h3>
+      <div class="chip-row">
+        <span class="chip">General checkup</span>
+        <span class="chip">Vaccination</span>
+        <span class="chip">Minor surgery</span>
+        <span class="chip">Grooming</span>
+        <span class="chip">Ambulance on call</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-timings" class="tab-panel" style="padding-top:22px;" hidden>
+    <div class="kv-table">
+      <div class="kv-row"><span class="k">Monday – Saturday</span><span class="v">9:00 – 21:00</span></div>
+      <div class="kv-row"><span class="k">Sunday</span><span class="v">10:00 – 14:00</span></div>
+      <div class="kv-row"><span class="k">Ambulance</span><span class="v">Available, on call</span></div>
+      <div class="kv-row"><span class="k">Address</span><span class="v">Shop 4, DLF Galleria, SL-2</span></div>
+    </div>
+  </div>
+
+  <div id="tab-reviews" class="tab-panel" style="padding-top:22px; display:flex; flex-direction:column; gap:14px;" hidden>
+    <div class="review">
+      <span class="av">R</span>
+      <div>
+        <div style="font-weight:800; font-size:13.5px;">Riya M. <span class="stars" style="margin-left:6px;">★★★★★</span></div>
+        <p class="muted" style="margin-top:4px; font-size:13.5px;">Took my indie in at 10pm with a limp — they were calm, quick, and didn't overcharge.</p>
+      </div>
+    </div>
+    <div class="review">
+      <span class="av">K</span>
+      <div>
+        <div style="font-weight:800; font-size:13.5px;">Karan S. <span class="stars" style="margin-left:6px;">★★★★☆</span></div>
+        <p class="muted" style="margin-top:4px; font-size:13.5px;">Good with vaccination reminders. Slightly long wait on weekends.</p>
+      </div>
+    </div>
+    <div class="review">
+      <span class="av">A</span>
+      <div>
+        <div style="font-weight:800; font-size:13.5px;">Anu D. <span class="stars" style="margin-left:6px;">★★★★★</span></div>
+        <p class="muted" style="margin-top:4px; font-size:13.5px;">The ambulance pickup for a rescued street dog was fast and free. Highly recommend.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky-contact">
+    <a href="#" class="js-send-btn" data-label="WhatsApp" data-sent="Opening" data-variant="light"></a>
+    <a href="#" class="js-send-btn" data-label="Call clinic" data-sent="Calling"></a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom:14px;">Pawzz<span class="dot">.</span></a>
+      <p style="max-width:32ch; font-size:13.5px; line-height:1.7;">Balancing the human-animal ecosystem in India — rescue, adoption, and now, instant access to verified animal care.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul><li><a href="#">Adoption</a></li><li><a href="#">Campaigns</a></li><li><a href="#">Missing Pets</a></li><li><a href="#">Memory Wall</a></li></ul>
+    </div>
+    <div>
+      <h4>Find Care</h4>
+      <ul><li><a href="search.html">Search Providers</a></li><li><a href="emergency.html">Emergency SOS</a></li><li><a href="health.html">Pet Health</a></li><li><a href="triage.html">Ask Pawzz AI</a></li></ul>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <ul><li><a href="#">Volunteer</a></li><li><a href="#">Donate</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pawzz Foundation, Gurgaon</span>
+    <span>Find Care is a concept prototype · Product &amp; Technology Internship submission · <a href="case-study.html" style="color:var(--white); text-decoration:underline;">Read the case study</a></span>
+  </div>
+</footer>
+
+<nav class="app-tabbar" aria-label="Primary">
+  <a href="index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="search.html"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search</a>
+  <a href="emergency.html" class="tab-sos"><svg class="icon" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>SOS</a>
+  <a href="health.html"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>Health</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

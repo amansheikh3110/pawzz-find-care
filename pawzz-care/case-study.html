@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Care Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/send-button.css">
+<link rel="stylesheet" href="assets/css/case-study.css">
+<link rel="icon" type="image/png" href="assets/images/brand-mark.png">
+</head>
+<body>
+
+<header class="cs-header">
+  <div class="container">
+    <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/images/brand-mark.png" alt=""></span>Pawzz<span class="dot">.</span></a>
+    <a href="index.html" class="cs-back">&larr; Back to Find Care</a>
+  </div>
+</header>
+
+<section class="cs-hero">
+  <div class="container">
+    <span class="eyebrow">Product &amp; Technology Case Study</span>
+    <h1 data-fold data-fold-trigger="mount">From a fragmented search to a paw print away</h1>
+    <p class="lede">How Find Care turns "which vet is even open right now?" into a location-based, AI-assisted animal-care platform — built end to end as a working prototype, not just a deck. This page walks through the same five questions as the 2-page submission, with room to actually show the diagrams.</p>
+    <div class="cs-hero-links">
+      <a href="index.html" class="js-send-btn" data-label="Open the live prototype" data-sent="Opening"></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — PRODUCT CONCEPT -->
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head cs-reveal">
+      <span class="cs-num">01 · Product Concept</span>
+      <h2>Discovery-in-a-crisis, before anything else</h2>
+      <p>In an emergency — an injured stray, a sick pet after hours — there's no reliable way to find a nearby, verified vet, ambulance or rescuer. Information is scattered across Google, Instagram and WhatsApp groups. That's the highest-intent, most frequent pain point, so it comes before routine browsing or booking.</p>
+    </div>
+
+    <div class="cs-personas cs-reveal-stagger">
+      <div class="cs-persona">
+        <span class="cs-p-icon" style="background:var(--purple-100); color:var(--purple-800);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+        </span>
+        <h3>Pet parents</h3>
+        <p>Primary audience. Urban India, need fast access to trustworthy care and a running health record for their pet.</p>
+      </div>
+      <div class="cs-persona">
+        <span class="cs-p-icon" style="background:var(--coral-100); color:var(--coral-600);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </span>
+        <h3>Rescuers &amp; feeders</h3>
+        <p>Secondary audience. Need the nearest ambulance or NGO for a street animal, fast, with no time for research.</p>
+      </div>
+      <div class="cs-persona">
+        <span class="cs-p-icon" style="background:var(--yellow-400); color:var(--ink-900);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        </span>
+        <h3>Vets, NGOs &amp; shelters</h3>
+        <p>Supply side. Get discovered by the people already searching for them, without paying for ads.</p>
+      </div>
+    </div>
+
+    <div class="cs-features cs-reveal-stagger">
+      <div class="cs-feature"><span class="cs-f-num">1</span><div><strong>Location-based directory</strong><span>Vets, ambulances, NGOs, rescuers and boarding — filterable by distance and open-now status.</span></div></div>
+      <div class="cs-feature"><span class="cs-f-num">2</span><div><strong>Verified provider profiles</strong><span>Timings, services offered, one-tap call/WhatsApp.</span></div></div>
+      <div class="cs-feature"><span class="cs-f-num">3</span><div><strong>Emergency SOS mode</strong><span>Nearest 24×7 help, ranked by ETA and verification — never by ads.</span></div></div>
+      <div class="cs-feature"><span class="cs-f-num">4</span><div><strong>Pet health profile</strong><span>Vaccination and visit history in one place.</span></div></div>
+      <div class="cs-feature"><span class="cs-f-num">5</span><div><strong>AI document upload</strong><span>A photo of a report becomes a structured timeline entry, with reminders.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — USER FLOW -->
+<section class="cs-section" style="background:var(--cream-50);">
+  <div class="container">
+    <div class="cs-section-head cs-reveal">
+      <span class="cs-num">02 · User Flow &amp; Prototype</span>
+      <h2>Two paths, one directory</h2>
+      <p>A calm path for routine care, and a fast, parallel path for emergencies — both drawing from the same verified provider directory.</p>
+    </div>
+
+    <div class="cs-diagram cs-reveal">
+      <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="var(--purple-600)"/>
+          </marker>
+          <marker id="arrowCoral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="var(--coral-500)"/>
+          </marker>
+        </defs>
+
+        <path class="cs-flow-path teal" pathLength="1" d="M160,43 L196,43" marker-end="url(#arrowTeal)"/>
+        <path class="cs-flow-path teal" pathLength="1" d="M310,43 L346,43" marker-end="url(#arrowTeal)"/>
+        <path class="cs-flow-path teal" pathLength="1" d="M520,43 L556,43" marker-end="url(#arrowTeal)"/>
+        <path class="cs-flow-path coral" pathLength="1" d="M85,66 L85,156" marker-end="url(#arrowCoral)"/>
+        <path class="cs-flow-path coral" pathLength="1" d="M160,183 L196,183" marker-end="url(#arrowCoral)"/>
+        <path class="cs-flow-path coral" pathLength="1" d="M360,183 L396,183" marker-end="url(#arrowCoral)"/>
+
+        <rect class="cs-node-box" x="10" y="20" width="150" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="85" y="43" text-anchor="middle" dominant-baseline="middle">Home / Search</text>
+
+        <rect class="cs-node-box" x="200" y="20" width="110" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="255" y="43" text-anchor="middle" dominant-baseline="middle">Results</text>
+
+        <rect class="cs-node-box" x="350" y="20" width="170" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="435" y="43" text-anchor="middle" dominant-baseline="middle">Provider Profile</text>
+
+        <rect class="cs-node-box" x="560" y="20" width="150" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="635" y="43" text-anchor="middle" dominant-baseline="middle">Call / WhatsApp</text>
+
+        <rect class="cs-node-box" x="10" y="160" width="150" height="46" fill="var(--coral-100)" stroke="var(--coral-500)" stroke-width="2"/>
+        <text class="cs-node-label on-coral" x="85" y="183" text-anchor="middle" dominant-baseline="middle">Emergency SOS</text>
+
+        <rect class="cs-node-box" x="200" y="160" width="160" height="46" fill="var(--coral-100)" stroke="var(--coral-500)" stroke-width="2"/>
+        <text class="cs-node-label on-coral" x="280" y="183" text-anchor="middle" dominant-baseline="middle">Ranked Options</text>
+
+        <rect class="cs-node-box" x="400" y="160" width="110" height="46" fill="var(--coral-100)" stroke="var(--coral-500)" stroke-width="2"/>
+        <text class="cs-node-label on-coral" x="455" y="183" text-anchor="middle" dominant-baseline="middle">Call</text>
+      </svg>
+    </div>
+    <p class="cs-flow-caption">All <b>7 screens are live and clickable</b> in the prototype — this diagram is exactly what's built, not a plan for later.</p>
+  </div>
+</section>
+
+<!-- 03 — AI & AUTOMATION -->
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head cs-reveal">
+      <span class="cs-num">03 · AI &amp; Automation</span>
+      <h2>Where AI actually carries weight</h2>
+      <p>Two of these run as working demos in the prototype today (document extraction and symptom triage); the other two are the automation this data unlocks on the supply and NGO side.</p>
+    </div>
+
+    <div class="cs-ai-grid cs-reveal-stagger">
+      <div class="cs-ai-card">
+        <span class="cs-ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5M8 13h8M8 17h5"/></svg></span>
+        <h3>Medical-document extraction</h3>
+        <p><b>Processes:</b> a photo of a prescription, vaccination card or lab report. <b>Automates:</b> manually re-typing medical history — the model extracts diagnosis, medicines and next-due dates straight into the pet's timeline, with reminders.</p>
+      </div>
+      <div class="cs-ai-card">
+        <span class="cs-ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20l1.1-5A8.4 8.4 0 1 1 21 11.5z"/></svg></span>
+        <h3>Symptom triage &amp; routing</h3>
+        <p><b>Processes:</b> free-text symptoms plus species/age. <b>Automates:</b> deciding urgent vs. routine and routing to the right provider type, instead of a blind directory search.</p>
+      </div>
+      <div class="cs-ai-card">
+        <span class="cs-ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+        <h3>Directory enrichment</h3>
+        <p><b>Processes:</b> unstructured listings pulled from Google, Instagram and WhatsApp Business. <b>Automates:</b> structuring, de-duplicating and flagging inconsistent entries — the manual ops work of building the directory.</p>
+      </div>
+      <div class="cs-ai-card">
+        <span class="cs-ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg></span>
+        <h3>Rescue-story copy assistant</h3>
+        <p><b>Processes:</b> a rescuer's raw notes and photos. <b>Automates:</b> drafting a publishable rescue story or fundraiser post.</p>
+      </div>
+    </div>
+
+    <div class="cs-own-ideas cs-reveal">
+      <b>Own ideas:</b> the emergency-first framing, ranking SOS results by ETA + verification (never ads), and using document-extraction to build a longitudinal pet health record are original to this concept. The base "searchable directory" pattern is inspired by Practo/JustDial-style platforms, as named in the brief.
+    </div>
+  </div>
+</section>
+
+<!-- 04 — TECHNOLOGY -->
+<section class="cs-section" style="background:var(--cream-50);">
+  <div class="container">
+    <div class="cs-section-head cs-reveal">
+      <span class="cs-num">04 · Technology</span>
+      <h2>How the pieces connect</h2>
+      <p>Next.js on Vercel, Supabase for the database and auth, Claude for the two AI workflows above.</p>
+    </div>
+
+    <div class="cs-arch cs-diagram cs-reveal">
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowTeal2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="var(--purple-600)"/>
+          </marker>
+        </defs>
+        <path class="cs-flow-path teal" pathLength="1" d="M380,54 L380,96" marker-end="url(#arrowTeal2)"/>
+        <path class="cs-flow-path teal" pathLength="1" d="M380,144 L200,196" marker-end="url(#arrowTeal2)"/>
+        <path class="cs-flow-path teal" pathLength="1" d="M380,144 L380,196" marker-end="url(#arrowTeal2)"/>
+        <path class="cs-flow-path teal" pathLength="1" d="M380,144 L560,196" marker-end="url(#arrowTeal2)"/>
+
+        <rect class="cs-node-box" x="280" y="10" width="200" height="44" fill="var(--white)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="380" y="32" text-anchor="middle" dominant-baseline="middle">Client (Web / Mobile)</text>
+
+        <rect class="cs-node-box" x="280" y="100" width="200" height="44" fill="var(--purple-800)" stroke="var(--purple-800)" stroke-width="2"/>
+        <text class="cs-node-label" x="380" y="122" text-anchor="middle" dominant-baseline="middle" fill="var(--white)">API Layer</text>
+
+        <rect class="cs-node-box" x="20" y="200" width="210" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="125" y="223" text-anchor="middle" dominant-baseline="middle">AI Layer — Claude API</text>
+
+        <rect class="cs-node-box" x="270" y="200" width="220" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="380" y="223" text-anchor="middle" dominant-baseline="middle">Postgres + PostGIS</text>
+
+        <rect class="cs-node-box" x="520" y="200" width="210" height="46" fill="var(--purple-100)" stroke="var(--purple-600)" stroke-width="2"/>
+        <text class="cs-node-label" x="625" y="223" text-anchor="middle" dominant-baseline="middle">Object Storage</text>
+      </svg>
+    </div>
+    <p class="cs-flow-caption">The API layer also calls out to <b>Google Maps/Places, the WhatsApp Business API, Razorpay and Firebase Cloud Messaging</b> as needed — not modelled as separate always-on services.</p>
+
+    <div class="cs-chip-grid cs-reveal-stagger">
+      <span class="cs-chip">Next.js</span>
+      <span class="cs-chip">Vercel</span>
+      <span class="cs-chip">Supabase</span>
+      <span class="cs-chip">Postgres + PostGIS</span>
+      <span class="cs-chip">Claude API</span>
+      <span class="cs-chip">Google Maps / Places</span>
+      <span class="cs-chip">WhatsApp Business API</span>
+      <span class="cs-chip">Razorpay</span>
+      <span class="cs-chip">Firebase Cloud Messaging</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — MVP THINKING -->
+<section class="cs-section">
+  <div class="container">
+    <div class="cs-section-head cs-reveal">
+      <span class="cs-num">05 · MVP Thinking</span>
+      <h2>30 days, Gurgaon-only</h2>
+      <p>Enough to test the emergency-first bet with real providers, without building things a first cohort won't miss yet.</p>
+    </div>
+
+    <div class="cs-timeline cs-reveal">
+      <div class="cs-timeline-bar"><div class="cs-timeline-fill"></div></div>
+      <div class="cs-timeline-labels"><span>Day 1</span><span>Day 21 — build freeze</span><span>Day 30 — live</span></div>
+    </div>
+
+    <div class="cs-mvp-cols cs-reveal-stagger">
+      <div class="cs-mvp-col build">
+        <h4>Build</h4>
+        <p>Directory + geo-search, provider profiles, SOS flow, manual pet profile, and the AI document-upload feature — launched Gurgaon-only with 30–50 manually onboarded, verified listings.</p>
+      </div>
+      <div class="cs-mvp-col skip">
+        <h4>Leave out</h4>
+        <p>Booking &amp; payments, native mobile apps, self-serve provider onboarding, reviews/ratings, AI chat triage (needs tuning), multi-city expansion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="cs-footer">
+  <div class="container">
+    <h2>See it running, not just described</h2>
+    <p>Every screen in this document is live — search, provider profiles, the SOS flow, and both AI demos.</p>
+    <div class="cs-footer-links">
+      <a href="index.html" class="js-send-btn" data-label="Open the live prototype" data-sent="Opening"></a>
+    </div>
+    <p class="cs-footer-tools">TOOLS &amp; AI PLATFORMS USED — CLAUDE (CLAUDE CODE) FOR PRODUCT THINKING, THE PROTOTYPE, THE PDF AND THIS PAGE</p>
+  </div>
+</footer>
+
+<script src="assets/js/case-study.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency SOS — Pawzz Find Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/send-button.css">
+<link rel="icon" type="image/png" href="assets/images/brand-mark.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-top">
+    <div class="container nav-top-inner">
+      <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/images/brand-mark.png" alt=""></span>Pawzz<span class="dot">.</span></a>
+    </div>
+  </div>
+  <div class="nav-bottom">
+    <div class="container">
+      <nav class="nav-links">
+        <a href="#">Adoption</a>
+        <a href="#">Campaign</a>
+        <a href="#">Missing Pets</a>
+        <a href="#">Memory</a>
+        <a href="index.html" class="active new">Find Care</a>
+        <a href="#">Get Involved</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding:28px 24px 60px; max-width:760px;">
+  <a class="back-link" href="index.html">&larr; Back to Find Care</a>
+
+  <div class="page-art page-art-sm">
+    <img src="assets/images/emergency-hero.png" alt="A caring vet gently holding an injured dog wrapped in a blanket">
+  </div>
+
+  <div class="sos-hero">
+    <span class="tag">Emergency mode</span>
+    <h1 data-fold data-fold-trigger="mount" data-fold-hinge="bottom">Animal Emergency</h1>
+    <p style="opacity:.9; margin-top:8px;">Detected near MG Road, Sector 28, Gurgaon</p>
+    <div class="toggle-pair">
+      <button class="on">My pet</button>
+      <button>Street animal</button>
+    </div>
+  </div>
+
+  <p class="eyebrow" style="display:block; margin-top:30px;">Nearest help, ranked by ETA</p>
+
+  <div style="display:flex; flex-direction:column; gap:14px; margin-top:14px;">
+    <div class="sos-card">
+      <div class="row1">
+        <span style="font-weight:800; font-size:15px;">PawSafe Animal Ambulance</span>
+        <span class="eta">8 min ETA</span>
+      </div>
+      <div class="muted mono" style="font-size:12.5px;">1.4 km · 24×7 · <span class="badge badge-verified" style="margin-left:2px;">Verified</span></div>
+      <a href="#" class="js-send-btn" data-label="Call ambulance" data-sent="Calling" data-variant="sos"></a>
+    </div>
+    <div class="sos-card">
+      <div class="row1">
+        <span style="font-weight:800; font-size:15px;">MG Road Vet &amp; Emergency</span>
+        <span class="eta">12 min ETA</span>
+      </div>
+      <div class="muted mono" style="font-size:12.5px;">2.4 km · 24×7 vet on duty</div>
+      <a href="provider.html" class="js-send-btn" data-label="Call clinic" data-sent="Calling" data-variant="light"></a>
+    </div>
+    <div class="sos-card">
+      <div class="row1">
+        <span style="font-weight:800; font-size:15px;">Gurugram Animal Welfare Trust</span>
+        <span class="eta">15 min ETA</span>
+      </div>
+      <div class="muted mono" style="font-size:12.5px;">3.0 km · Street rescue team</div>
+      <a href="#" class="js-send-btn" data-label="Contact rescuer" data-sent="Notified" data-variant="light"></a>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-top:26px;">
+    <svg class="icon" viewBox="0 0 24 24" style="width:26px;height:26px; flex-shrink:0;"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+    <div>
+      <strong>While help is on the way:</strong>
+      <p style="margin-top:4px; font-size:13.5px;">Keep the animal warm and calm, avoid moving an injured limb, and don't offer food or water if surgery may be needed.</p>
+    </div>
+  </div>
+
+  <p class="muted" style="text-align:center; margin-top:24px; font-size:12.5px;">Ranked by distance, live availability and verification — never by ads.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom:14px;">Pawzz<span class="dot">.</span></a>
+      <p style="max-width:32ch; font-size:13.5px; line-height:1.7;">Balancing the human-animal ecosystem in India — rescue, adoption, and now, instant access to verified animal care.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul><li><a href="#">Adoption</a></li><li><a href="#">Campaigns</a></li><li><a href="#">Missing Pets</a></li><li><a href="#">Memory Wall</a></li></ul>
+    </div>
+    <div>
+      <h4>Find Care</h4>
+      <ul><li><a href="search.html">Search Providers</a></li><li><a href="emergency.html">Emergency SOS</a></li><li><a href="health.html">Pet Health</a></li><li><a href="triage.html">Ask Pawzz AI</a></li></ul>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <ul><li><a href="#">Volunteer</a></li><li><a href="#">Donate</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Pawzz Foundation, Gurgaon</span>
+    <span>Find Care is a concept prototype · Product &amp; Technology Internship submission · <a href="case-study.html" style="color:var(--white); text-decoration:underline;">Read the case study</a></span>
+  </div>
+</footer>
+
+<nav class="app-tabbar" aria-label="Primary">
+  <a href="index.html"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="search.html"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search</a>
+  <a href="emergency.html" class="tab-sos"><svg class="icon" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>SOS</a>
+  <a href="health.html"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>Health</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
