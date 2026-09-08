@@ -7,7 +7,7 @@
 Built for the Pawzz Foundation Product & Technology Internship screening assignment —
 not a mockup, a working, clickable, deployable site.
 
-[Live prototype](pawzz-care/index.html) · [Case study](pawzz-care/case-study.html) · [Design system](#-design-system) · [Deploying](#-deploying)
+[Live prototype](https://pawzz-find-care.vercel.app/index.html) · [Case study](https://pawzz-find-care.vercel.app/) · [Design system](#-design-system) · [Deploying](#-deploying)
 
 ![No build step](https://img.shields.io/badge/build-none-1F6F5C?style=flat-square)
 ![Vanilla JS](https://img.shields.io/badge/JS-vanilla-1F6F5C?style=flat-square)
