@@ -2,3 +2,8 @@
 /Practo-for-Animals-Product-Technology-Assignment.pdf
 /prototype.html
 /writeup.html
+
+# Node artifacts — this site has no build step; nothing here should ever
+# need npm, but ignore it defensively in case a package.json shows up again
+node_modules/
+package-lock.json
